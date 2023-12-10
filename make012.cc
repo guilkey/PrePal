@@ -102,6 +102,24 @@ int main(int argc, char** argv){
       }
     }
   }
+  int k=0;
+  for(int j=1; j<Jorig-1; j++){
+    for(int i=1; i<Iorig-1; i++){
+      unsigned int p = get1DIndex(i,j,k,Iorig,Jorig);
+      if(vx[p]>1){
+        zot[p]=1;
+      }
+    }
+  }
+  k=Korig-1;
+  for(int j=1; j<Jorig-1; j++){
+    for(int i=1; i<Iorig-1; i++){
+      unsigned int p = get1DIndex(i,j,k,Iorig,Jorig);
+      if(vx[p]>1){
+        zot[p]=1;
+      }
+    }
+  }
 
   // Put the value of zot back into the char* voxel array.
   for(unsigned int n=0; n<totalVoxels; n++){

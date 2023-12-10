@@ -44,6 +44,14 @@ int main(int argc, char** argv){
   int Jnew =atoi(argv[5]);
   int Knew =atoi(argv[6]);
   char* inFile = argv[7];
+  int kstart=1;
+  int kend=Knew+1;
+  int koff = 1;
+  if(Korig==Knew){
+    kstart=0;
+    kend=Knew;
+    koff = 0;
+  }
 
   const int buffer = 2;  // This could be an input parameter
 
@@ -102,11 +110,11 @@ int main(int argc, char** argv){
 
   // Trim the 3D array, starting from 1 from each edge
   int count=0;
-  for(int k=1; k<=Knew; k++){
+  for(int k=kstart; k<kend; k++){
     for(int j=1; j<=Jnew; j++){
       for(int i=1; i<=Inew; i++){
         int p   = get1DIndex(i,j,k,Iorig,Jorig);
-        int pm1 = get1DIndex(i-1,j-1,k-1,Inew,Jnew);
+        int pm1 = get1DIndex(i-1,j-1,k-koff,Inew,Jnew);
         clip[pm1]=voxel[p];
         count++;
       }
